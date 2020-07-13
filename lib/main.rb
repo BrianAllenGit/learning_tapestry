@@ -1,5 +1,6 @@
 require "rack"
 require "thin"
+require_relative "./db"
 
 class Main
     def call(env)
@@ -7,22 +8,34 @@ class Main
 
         handle_request(request)
     end
-  
+    
     private
   
     def handle_request(request)
         return method_not_allowed unless request.request_method == "GET"
         return not_found unless request.path == "/resources" ||  request.path == "/resources_by_field"
             
-        get(request)
+        if request.path == "/resources"
+            getAll(request)
+        else
+            get(request)
+        end
     end
 
     def get(request)
-        [200, { "Content-Type" => "text/html" }, ["Hello!"]]
+        resources = DB.connect[:resources]
+        everything = resources.all
+        [200, { "Content-Type" => "application/json" }, [everything]]
+    end
+
+    def getAll(request)
+        resources = DB.connect[:resources]
+        everything = resources.all
+        [200, { "Content-Type" => "application/json" }, [everything]]
     end
 
     def method_not_allowed()
-        [405, {}, ["Method not allowed"]]
+        [405, { "Content-Type" => "text/plain" }, ["Method not allowed"]]
     end
 
     def not_found()

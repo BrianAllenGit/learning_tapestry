@@ -38,4 +38,4 @@ ruby lib/app.rb
 
 ## To access
 
-The running app can be accessed at http://localhost:8080/resources
+The running app can be accessed at http://localhost:8080/resources through the browser, or through Postman

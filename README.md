@@ -22,6 +22,7 @@ GRANT ALL PRIVILEGES ON DATABASE learning_tapestry_dev TO learning_tapestry_admi
 CD into directory
 ```
 bundle install
+rake fetch_data
 ```
 
 ## To run

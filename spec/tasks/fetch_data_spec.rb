@@ -1,10 +1,10 @@
-require_relative "./../../lib/tasks/fetch_data"
+require_relative './../../lib/tasks/fetch_data'
 
 describe FetchData do
   subject(:api) { described_class.new() }
   
     describe '#run' do
-        let(:staging_url) { "https://staging.credentialengineregistry.org/envelopes" }
+        let(:staging_url) { 'https://staging.credentialengineregistry.org/envelopes' }
         let(:staging_response) { instance_double(HTTParty::Response, body: staging_response_body) }
         let(:staging_response_body) { 'res' }
 
@@ -16,6 +16,14 @@ describe FetchData do
         it 'fetches the data from the URL' do
             api.run(:staging_url)
             expect(HTTParty).to have_received(:get).with(:staging_url, {:format=>:json})
+        end
+
+        it 'normalizes the data' do
+            # TODO: normalization of data
+        end
+
+        it 'saves the data' do
+            # TODO: test the data being saved
         end
     end
 end

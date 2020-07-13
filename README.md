@@ -1,15 +1,16 @@
 # learning_tapestry
 
-# Made using Ruby 2.3.1
+### Made using Ruby 2.3.1
 
 ## Requirements
 
-PostgreSQL 12.1
-Ruby 2.3.1
-PSQL 12.3
+* PostgreSQL 12.1
+* Ruby 2.3.1
+* PSQL 12.3
+* Bundler 1.16.6
 
 ## Setting up the local DB
-To begin, we must setup a local dev copy of the database. We will be loggin in with the default postgres user `postgres`. If you modified the default postgres user, please login with the appropriate user.
+To begin, we will first setup a local dev copy of the database. We will be logging in with the default postgres user `postgres`. If you modified the default postgres user, please login with the appropriate user.
 
 ```
 psql postgres
@@ -19,17 +20,22 @@ GRANT ALL PRIVILEGES ON DATABASE learning_tapestry_dev TO learning_tapestry_admi
 ```
 
 ## To install
-CD into directory
+
+Open up a terminal and enter the following
+
 ```
+git clone git@github.com:BrianAllenGit/learning_tapestry.git
+cd learning_tapestry/
 bundle install
 rake fetch_data
 ```
 
 ## To run
-CD into directory
 ```
+cd learning_tapestry/
 ruby lib/app.rb
 ```
 
 ## To access
-localhost:8080
+
+The running app can be accessed at http://localhost:8080/resources

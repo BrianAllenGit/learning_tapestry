@@ -1,4 +1,7 @@
 require_relative "./lib/tasks/fetch_data" 
+require_relative "./lib/db"
+
+DB.new()
 
 begin
     require 'rspec/core/rake_task'
